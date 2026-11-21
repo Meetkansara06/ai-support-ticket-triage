@@ -40,7 +40,7 @@ def run_pipeline(
     decisions: dict[int, TriageDecision] = {}
     results = PipelineDecisions()
 
-    def process(index: int, ticket: Ticket) -> TriageDecision:
+    def process(ticket: Ticket) -> TriageDecision:
         started = time.perf_counter()
         attempts = 0
         llm_result: LLMTriageResult | None = None
@@ -87,7 +87,7 @@ def run_pipeline(
 
     with ThreadPoolExecutor(max_workers=settings.CONCURRENCY) as executor:
         futures = {
-            executor.submit(process, index, ticket): index
+            executor.submit(process, ticket): index
             for index, ticket in enumerate(tickets)
         }
         for future in as_completed(futures):

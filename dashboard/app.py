@@ -1,8 +1,9 @@
 """Streamlit dashboard for support ticket triage results."""
 
 from pathlib import Path
-import sys
 import subprocess
+import sys
+import json
 
 import pandas as pd
 import plotly.express as px
@@ -79,8 +80,6 @@ def load_outputs() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict]:
         dtype=str,
         keep_default_na=False,
     )
-    import json
-
     report = json.loads(
         (OUTPUTS / "run_report.json").read_text(encoding="utf-8")
     )

@@ -1,7 +1,6 @@
 """LLM classification prompts, parsing, retries, and caching."""
 
 import json
-import logging
 from threading import Lock
 
 from pydantic import ValidationError
@@ -19,7 +18,6 @@ from app.preprocess import prepare_text, text_hash
 from app.schemas import Category, LLMTriageResult, Priority, Ticket
 
 
-LOGGER = logging.getLogger(__name__)
 _CACHE_LOCK = Lock()
 
 
@@ -79,6 +77,7 @@ def classify(
     text = prepare_text(ticket, settings.MAX_BODY_CHARS)
     user_prompt = f"<ticket>\n{text}\n</ticket>"
     attempts = 0
+
     def generate() -> LLMTriageResult:
         nonlocal attempts
         attempts += 1

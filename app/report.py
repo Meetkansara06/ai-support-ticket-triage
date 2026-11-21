@@ -1,11 +1,15 @@
 """Pipeline run report generation and summary output."""
 
 import json
+import logging
 from pathlib import Path
 
 from app.metrics import compute_metrics
 from app.pipeline import PipelineDecisions
 from app.schemas import TriageDecision
+
+
+LOGGER = logging.getLogger(__name__)
 
 
 def write_run_report(
@@ -22,10 +26,10 @@ def write_run_report(
         encoding="utf-8",
     )
 
-    print("Run summary")
-    print("-" * 64)
-    print(f"{'Metric':38} {'Value'}")
-    print("-" * 64)
+    LOGGER.info("Run summary")
+    LOGGER.info("-" * 64)
+    LOGGER.info("%-38s %s", "Metric", "Value")
+    LOGGER.info("-" * 64)
     for key, value in metrics.items():
-        print(f"{key:38} {value}")
+        LOGGER.info("%-38s %s", key, value)
     return metrics

@@ -52,7 +52,7 @@ The dataset has no ground-truth labels, so the project does not report accuracy.
 
 The submitted results.csv was produced in mock mode. The mock client is a simple keyword-based stand-in, so its categories and priorities are not real Gemini output. The real Gemini run was not completed because of a model configuration error.
 
-Mock-mode numbers from the 300-ticket run are: 300 total tickets, 267 automatically resolved, 33 sent to review, 294 LLM successes, 0 LLM failures, 0 fallbacks, 0 retries, 10 cache hits, 0.43333333333333335 average latency milliseconds, 0.0 p95 latency milliseconds, and 15331 estimated tokens. Mock review reasons are critical keywords, insufficient content, prompt-injection suspicion, and urgent priority review.
+Mock-mode numbers from the 300-ticket run are: 300 total tickets, 267 automatically resolved, 33 sent to review, 294 LLM successes, 0 LLM failures, 0 fallbacks, 0 retries, 10 cache hits, 0.18666666666666668 average latency milliseconds, 0.0 p95 latency milliseconds, and 15331 estimated tokens. Mock review reasons are critical keywords, insufficient content, prompt-injection suspicion, and urgent priority review.
 
 # Design Note
 

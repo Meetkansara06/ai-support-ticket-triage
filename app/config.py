@@ -64,12 +64,3 @@ class Settings:
             raise ValueError(f"Invalid environment setting: {exc}") from exc
         return settings
 
-    @classmethod
-    def load(cls) -> "Settings":
-        """Load settings, with the environment taking precedence over defaults."""
-        return cls.from_env()
-
-
-def get_settings() -> Settings:
-    """Return validated settings loaded from the environment."""
-    return Settings.from_env()
